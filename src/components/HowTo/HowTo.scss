@@ -1,0 +1,184 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.howto {
+    color: $color-white;
+    margin-bottom: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include respond(phone) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &__heading {
+        @include respond(phone) {
+            margin-left: 8.333333%;
+            flex: 0 0 83.333333%;
+            max-width: 83.333333%;
+        }
+    }
+
+    &__container {
+        flex: 0 0 75%;
+        max-width: 75%;
+
+        @include respond(tab-land) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        @include respond(tab-port) {
+            flex: 0 0 100%;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        @include respond(phone) {
+            max-width: 320px;
+            min-height: 400px;
+        }
+    }
+
+    &__images {
+        max-width: 500px;
+        position: relative;
+    }
+
+    &__circle {
+        width: 100%;
+    }
+
+    &__phone {
+        height: 65%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+
+    &__slider {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        & .flickity-enabled {
+            width: 100%;
+
+            & .flickity-viewport {
+                @include respond(phone) {
+                    overflow: visible;
+                }
+
+                & .flickity-slider {
+                    & .carousel-cell {
+                        position: absolute;
+                        height: 250px;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+
+                        @include respond(phone) {
+                            height: 400px;
+                        }
+
+                        & .cell-contents {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 60%;
+                            height: 250px;
+                            margin-left: 12.5rem;
+
+                            @include respond(tab-port) {
+                                margin-left: 12.6rem
+                            }
+
+                            @include respond(phone) {
+                                margin-left: 0;
+                                width: 100%;
+                                flex-direction: column;
+                                margin-top: 2.5rem;
+                                height: auto;
+                            }
+
+                            & .image-container {
+                                height: 100%;
+                                width: 290px; // the actual size is different, but an unknown bug shrinks it when the page reloads
+                                overflow: hidden;
+
+                                @include respond(tab-land) {
+                                    width: 250px;
+                                }
+
+                                @include respond(tab-port) {
+                                    width: 530px;
+                                }
+
+                                @include respond(phone) {
+                                    width: 74px;
+                                    height: 145px;
+                                    margin-bottom: 40px;
+                                }
+                            }
+
+                            & img {
+                                height: 100%;
+                            }
+
+                            & .step-info {
+                                padding-left: 2.5rem;
+
+                                @include respond(phone) {
+                                    padding: 0 1rem;
+                                }
+
+                                & h3 {
+                                    text-transform: uppercase;
+                                    letter-spacing: 4px;
+                                    margin-bottom: 1.5rem;
+
+                                    @include respond(phone) {
+                                        text-align: center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // the following code doesn't work. reason undiscovered.
+            & .flickity-button {
+                background: transparent;
+
+                &.flickity-prev-next-button {
+                    &.previous {
+                        left: -40px;
+                    }
+
+                    &.next {
+                        right: -40px;
+                    }
+
+                    & .arrow {
+                        fill: $color-white;
+                    }
+                }
+            }
+
+            & .flickity-page-dots {
+                width: 90%;
+                top: 60px;
+                text-align: right;
+            }
+        }
+    }
+}
